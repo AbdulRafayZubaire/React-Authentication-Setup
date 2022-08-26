@@ -16,8 +16,10 @@ app.use(express.json());
 // exported from routes/index.js
 
 import userRoute from './src/routes/userRoutes.js'
+import passwordRoutes from './src/routes/passwordRoutes.js';
 
 app.use('/api/user', userRoute)
+app.use('/api', passwordRoutes)
 // app.use(/)
 
 // Middlewares

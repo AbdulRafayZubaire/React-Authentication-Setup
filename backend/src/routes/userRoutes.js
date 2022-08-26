@@ -8,7 +8,9 @@ const router = express.Router();
 
 router.route('/signin').post(SiginRoute);
 router.route('/signup').post(SignupRoute);
-router.route('/update/:userId').put(updateUserInfoRoute)
+router.route('/update/:userId').put(updateUserInfoRoute);
 router.route('/verify-email/:verificationString').put(emailVerificationRoute)
+
+router.route('/')
 
 export default router;

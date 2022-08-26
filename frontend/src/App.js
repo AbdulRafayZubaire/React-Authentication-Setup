@@ -5,6 +5,8 @@ import SignupPage from './pages/SignupPage';
 import UserInfoPage from './pages/UserInfoPage';
 import './App.css'
 import EmailVerificationPage from "./pages/EmailVerificationPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import PasswordResetLandingPage from "./pages/PasswordResetLandingPage";
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/verify-email/:verificationString" element={<EmailVerificationPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password/:passwordResetString" element={<PasswordResetLandingPage />} />
             </Routes>
         </Router>
     </div>

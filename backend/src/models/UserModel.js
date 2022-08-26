@@ -24,6 +24,12 @@ const userSchema = mongoose.Schema({
     default: "",
     unique: true
   },
+  passwordResetString:{
+    type: String,
+    default: "",
+    unique: true,
+  }
+  ,
   startingInfo: {
     hairColor: {
       type: String,
