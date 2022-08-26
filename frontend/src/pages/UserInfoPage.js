@@ -6,23 +6,29 @@ import axios from "axios";
 
 const UserInfoPage = () => {
   const navigate = useNavigate();
+  const user = useUser();
 
+  console.log(user);
+  
   useEffect(() => {
-    if(!user || !token)
+    if(!user || !token){
       navigate('/login');
-  }, []);
+    }
+  }, [navigate, user, token]);
+
+  const { id, email, isVerified, startingInfo } = user[0] || '';
 
   const [token, setToken] = useToken();
-  const [user, setUser] = useUser();
+
   const [verified, setIsVerified] = useState(isVerified);
-  
-  const { id, email, isVerified, startingInfo } = user;
+
 
   const [favouriteFood, setFavoriteFood] = useState(
-    startingInfo.favouriteFood || ""
+    startingInfo? startingInfo.favouriteFood : ""
   );
-  const [hairColor, setHairColor] = useState(startingInfo.hairColor || "");
-  const [bio, setBio] = useState(startingInfo.Bio || "");
+  
+  const [hairColor, setHairColor] = useState(startingInfo ? startingInfo.hairColor : "");
+  const [bio, setBio] = useState(startingInfo ? startingInfo.Bio : "");
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -37,7 +43,8 @@ const UserInfoPage = () => {
   }, [showSuccessMessage, showErrorMessage, token]);
 
   const saveChanges = async () => {
-    try {if(user.isVerified){
+    try {
+      if (user.isVerified){
       const { data } = await axios.put(
         `/api/user/update/${id}`,
         { favouriteFood, hairColor, bio },

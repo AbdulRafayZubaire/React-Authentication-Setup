@@ -1,14 +1,14 @@
 // import { Redirect, Route } from "react-router-dom";
 
-// const PrivateRoutes = (props)=>{
+// const PrivateRoutes = (props) => {
 
-// const user = null;
+//     const user = null;
 
-// if(!user){
-//     return <Redirect to="/login" />
+//     if (!user) {
+//         return <Redirect to="/login" />
+//     }
+
+//     return <Route {...props} />
 // }
 
-// return <Route {...props} />
-// }
-
-// export {PrivateRoutes}
+// export { PrivateRoutes }

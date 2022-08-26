@@ -7,6 +7,7 @@ import './App.css'
 import EmailVerificationPage from "./pages/EmailVerificationPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import PasswordResetLandingPage from "./pages/PasswordResetLandingPage";
+// import {PrivateRoutes} from './auth/PrivateRoutes'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Router>
             <Routes>
             <Route path="/" element={<UserInfoPage />} />
+            {/* <PrivateRoutes path="/" element={<UserInfoPage />} /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/verify-email/:verificationString" element={<EmailVerificationPage />} />
