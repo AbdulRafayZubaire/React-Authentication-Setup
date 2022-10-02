@@ -17,9 +17,14 @@ app.use(express.json());
 
 import userRoute from './src/routes/userRoutes.js'
 import passwordRoutes from './src/routes/passwordRoutes.js';
+import googleOauthRoute from './src/routes/googleOauthRoutes.js'
 
 app.use('/api/user', userRoute)
 app.use('/api', passwordRoutes)
+app.get('/auth/google/callback', (req,  res)=>{
+    res.status(200).json("hello world")
+});
+app.use('/auth/google', googleOauthRoute);
 // app.use(/)
 
 // Middlewares

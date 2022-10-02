@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import User from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
 import {v4 as uuid} from 'uuid';
-import sendEmail from "../sendEmail.js";
+import sendEmail from "../utils/sendEmail.js";
 
 // ROUTE: /api/signup
 const SignupRoute = async (req, res) => {

@@ -8,10 +8,8 @@ const UserInfoPage = () => {
   const navigate = useNavigate();
   const user = useUser();
 
-  console.log(user);
-  
   useEffect(() => {
-    if(!user || !token){
+    if (!user || !token) {
       navigate('/login');
     }
   }, [navigate, user, token]);
@@ -24,9 +22,9 @@ const UserInfoPage = () => {
 
 
   const [favouriteFood, setFavoriteFood] = useState(
-    startingInfo? startingInfo.favouriteFood : ""
+    startingInfo ? startingInfo.favouriteFood : ""
   );
-  
+
   const [hairColor, setHairColor] = useState(startingInfo ? startingInfo.hairColor : "");
   const [bio, setBio] = useState(startingInfo ? startingInfo.Bio : "");
 
@@ -44,26 +42,26 @@ const UserInfoPage = () => {
 
   const saveChanges = async () => {
     try {
-      if (user.isVerified){
-      const { data } = await axios.put(
-        `/api/user/update/${id}`,
-        { favouriteFood, hairColor, bio },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const { newToken } = data;
-      setToken(newToken);
-      setShowSuccessMessage(true);
-    }
-    else{
-      setShowErrorMessage("To update data PLease verify your Email First")
-    }
+      if (verified) {
+        const { data } = await axios.put(
+          `/api/user/update/${id}`,
+          { favouriteFood, hairColor, bio },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const { newToken } = data;
+        setToken(newToken);
+        setShowSuccessMessage(true);
+      }
+      else {
+        setShowErrorMessage("To update data PLease verify your Email First")
+      }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       setShowErrorMessage(true);
     }
   };

@@ -10,7 +10,7 @@ const SiginRoute = async(req, res) =>{
 
     const user = await User.findOne({email});
     if(!user){
-        res.status(404).json({msg: "Invalid email or Password"})
+        return res.status(404).json({msg: "Invalid email or Password"})
     }
     
     const {_id: id, isVerified, password: passwordHash, startingInfo} = user;
@@ -35,7 +35,6 @@ const SiginRoute = async(req, res) =>{
     }
 } catch (error) {
         res.status(500).json({msg: error.message})
-        console.log('error', error.message);
 }
 }
 

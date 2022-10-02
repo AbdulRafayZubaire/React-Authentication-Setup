@@ -46,12 +46,11 @@ const updateUserInfoRoute = async(req, res)=>{
             { expiresIn: "2d" }
           );
         res.status(200).json({newToken});
-
     } catch (error) {
         
         console.log(error.message);
         res.status(403).json({message: "Not allowed to update this user\'s data"})
-    }
+    }   
 }
 
 export default updateUserInfoRoute;
