@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import useToken from './useToken';
-import jwt from "jsonwebtoken";
 
 const useUser = () =>{
 

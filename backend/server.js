@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './db.js'
 import dotenv from 'dotenv'
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
+import path from 'path'
 
 const PORT = process.env.PORT || 5000;
 dotenv.config();
@@ -26,6 +27,17 @@ app.get('/auth/google/callback', (req,  res)=>{
 });
 app.use('/auth/google', googleOauthRoute);
 // app.use(/)
+
+// static folder
+const __dirname = path.resolve();
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, "/frontend/build")))
+
+    app.get('*',  (req, res)=>{
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+      })
+}
+
 
 // Middlewares
 // app.use(notFound);
