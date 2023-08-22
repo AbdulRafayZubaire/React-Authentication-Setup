@@ -8,29 +8,24 @@ const UserInfoPage = () => {
   const navigate = useNavigate();
   const user = useUser();
 
-  useEffect(() => {
-    if (!user || !token) {
-      navigate('/login');
-    }
-  }, [navigate, user, token]);
-
+  
   const { id, email, isVerified, startingInfo } = user[0] || '';
 
   const [token, setToken] = useToken();
 
   const [verified, setIsVerified] = useState(isVerified);
-
-
+  
+  
   const [favouriteFood, setFavoriteFood] = useState(
     startingInfo ? startingInfo.favouriteFood : ""
-  );
-
-  const [hairColor, setHairColor] = useState(startingInfo ? startingInfo.hairColor : "");
+    );
+    
+    const [hairColor, setHairColor] = useState(startingInfo ? startingInfo.hairColor : "");
   const [bio, setBio] = useState(startingInfo ? startingInfo.Bio : "");
-
+  
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-
+  
   useEffect(() => {
     if (showSuccessMessage || showErrorMessage) {
       setTimeout(() => {
@@ -39,7 +34,13 @@ const UserInfoPage = () => {
       }, 3000);
     }
   }, [showSuccessMessage, showErrorMessage, token]);
-
+  
+  useEffect(() => {
+    if (!user || !token) {
+      navigate('/login');
+    }
+  }, [navigate, user, token]);
+  
   const saveChanges = async () => {
     try {
       if (verified) {

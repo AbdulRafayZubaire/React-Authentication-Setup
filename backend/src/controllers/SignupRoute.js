@@ -7,9 +7,10 @@ import sendEmail from "../utils/sendEmail.js";
 // ROUTE: /api/signup
 const SignupRoute = async (req, res) => {
   const { email, password } = req.body;
-
+  
   try {
     const prevuser = await User.findOne({ email });
+    console.log("hello");
 
     if (prevuser) {
       res.status(409).json({ msg: "user with this email already exist" });

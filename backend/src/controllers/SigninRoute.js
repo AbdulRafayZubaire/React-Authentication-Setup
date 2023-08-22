@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import User from '../models/UserModel.js'
 
 const SiginRoute = async(req, res) =>{
+  console.log("login");
 
     try {
         
